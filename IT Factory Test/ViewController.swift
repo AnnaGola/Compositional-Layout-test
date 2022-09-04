@@ -3,9 +3,8 @@ import Foundation
 
 class ViewController: UIViewController {
 
-    var sections: MainView?
+    var sections = Bundle.main.decode([Section].self, from: "jsonviewer.json")
     var collectionView: UICollectionView!
-
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>?
     
     override func viewDidLoad() {
@@ -14,23 +13,8 @@ class ViewController: UIViewController {
         registerCollectionViewCells()
         setupDataSource()
         reloadData()
-        parseJSONSections()
     }
-    
-    func parseJSONSections() {
-        guard let path = Bundle.main.path(forResource: "jsonviewer", ofType: "json") else { return }
-        
-        let url = URL(fileURLWithPath: path)
-        
-        do {
-            let jsonData = try Data(contentsOf: url)
-            sections = try JSONDecoder().decode(MainView.self, from: jsonData)
-            print(sections?.sections[0])
-        } catch {
-            print("Fatal error \(error)")
-        }
-    }
-    
+
     fileprivate func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -41,9 +25,6 @@ class ViewController: UIViewController {
     fileprivate func  registerCollectionViewCells() {
         collectionView.register(HeaderSection.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderSection.identifier)
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
-        
-        collectionView.dataSource = self.dataSource
-        reloadData()
     }
     
     func configure<Cell: SelfConfiguringCell>(_ cellType: Cell.Type, with item: Item, for indexPath: IndexPath) -> Cell {
@@ -55,11 +36,11 @@ class ViewController: UIViewController {
     }
     
     func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) { [weak self] collectionView, indexPath, item in
+        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) { collectionView, indexPath, item in
             
-            switch self?.sections?.sections[indexPath.row].items {
+            switch self.sections[indexPath.section].id {
             default:
-                return self?.configure(CollectionViewCell.self, with: item, for: indexPath)
+               return self.configure(CollectionViewCell.self, with: item, for: indexPath)
             }
         }
         
@@ -80,9 +61,9 @@ class ViewController: UIViewController {
     
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-        snapshot.appendSections(sections?.sections ?? [])
+        snapshot.appendSections(sections)
         
-        sections?.sections.forEach { section in
+        for section in sections {
             snapshot.appendItems(section.items, toSection: section)
         }
         
@@ -92,11 +73,11 @@ class ViewController: UIViewController {
     
     func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) in
-            let section = self.sections?.sections[sectionIndex]
+            let section = self.sections[sectionIndex]
             
-            switch section?.header {
+            switch section.id {
             default:
-                return self.createSectionsLayout(of: section!)
+                return self.createSectionsLayout(of: section)
             }
         }
         
@@ -125,6 +106,9 @@ class ViewController: UIViewController {
                                                         bottom: 0,
                                                         trailing: 16)
         section.orthogonalScrollingBehavior = .continuous
+        
+        let layoutSectionHeader = createSectionHeader()
+        section.boundarySupplementaryItems = [layoutSectionHeader]
         
         return section
     }

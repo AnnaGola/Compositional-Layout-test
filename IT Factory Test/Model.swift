@@ -1,10 +1,6 @@
 
 import Foundation
 
-struct MainView: Codable, Hashable {
-    let sections: [Section]
-}
-
 // MARK: - Section
 struct Section: Codable, Hashable {
     static func == (lhs: Section, rhs: Section) -> Bool {

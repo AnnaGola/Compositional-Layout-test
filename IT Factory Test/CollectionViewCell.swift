@@ -10,8 +10,11 @@ class CollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
     static let identifier = "CollectionViewCell"
     
     private let title = UILabel()
-    private let image = UIImageView()
-    
+    private var image = UIImageView() {
+        didSet {
+            image.backgroundColor = .red
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

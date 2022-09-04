@@ -17,6 +17,7 @@
 		AFFF21DB28C524A4006B6266 /* HeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFF21DA28C524A4006B6266 /* HeaderSection.swift */; };
 		AFFF21DD28C524B9006B6266 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFF21DC28C524B9006B6266 /* Model.swift */; };
 		AFFF21DF28C524C3006B6266 /* jsonviewer.json in Resources */ = {isa = PBXBuildFile; fileRef = AFFF21DE28C524C2006B6266 /* jsonviewer.json */; };
+		AFFF21E328C53046006B6266 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFF21E228C53046006B6266 /* Bundle-Decodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		AFFF21DA28C524A4006B6266 /* HeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSection.swift; sourceTree = "<group>"; };
 		AFFF21DC28C524B9006B6266 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		AFFF21DE28C524C2006B6266 /* jsonviewer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jsonviewer.json; sourceTree = "<group>"; };
+		AFFF21E228C53046006B6266 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				AFFF21D828C5248A006B6266 /* CollectionViewCell.swift */,
 				AFFF21DA28C524A4006B6266 /* HeaderSection.swift */,
 				AFFF21DC28C524B9006B6266 /* Model.swift */,
+				AFFF21E228C53046006B6266 /* Bundle-Decodable.swift */,
 				AFFF21DE28C524C2006B6266 /* jsonviewer.json */,
 				AFFF21CA28C52440006B6266 /* Main.storyboard */,
 				AFFF21CD28C52444006B6266 /* Assets.xcassets */,
@@ -156,6 +159,7 @@
 				AFFF21C528C52440006B6266 /* AppDelegate.swift in Sources */,
 				AFFF21DD28C524B9006B6266 /* Model.swift in Sources */,
 				AFFF21D928C5248A006B6266 /* CollectionViewCell.swift in Sources */,
+				AFFF21E328C53046006B6266 /* Bundle-Decodable.swift in Sources */,
 				AFFF21C728C52440006B6266 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
