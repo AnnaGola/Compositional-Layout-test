@@ -1,3 +1,4 @@
+
 import UIKit
 import Foundation
 
@@ -19,6 +20,7 @@ class ViewController: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .white
+        collectionView.showsVerticalScrollIndicator = false
         view.addSubview(collectionView)
     }
     
@@ -82,7 +84,7 @@ class ViewController: UIViewController {
         }
         
         let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20
+        config.interSectionSpacing = 10
         layout.configuration = config
         
         return layout
@@ -107,8 +109,8 @@ class ViewController: UIViewController {
                                                         trailing: 16)
         section.orthogonalScrollingBehavior = .continuous
         
-        let layoutSectionHeader = createSectionHeader()
-        section.boundarySupplementaryItems = [layoutSectionHeader]
+        let sectionHeader = createSectionHeader()
+        section.boundarySupplementaryItems = [sectionHeader]
         
         return section
     }

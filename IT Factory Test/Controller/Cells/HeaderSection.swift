@@ -1,16 +1,14 @@
+
 import UIKit
 
 class HeaderSection: UICollectionReusableView {
         
     static let identifier = "HeaderSection"
     
-    let title = UILabel()
+    let title = UILabel(textColor: #colorLiteral(red: 0.1714912653, green: 0.1865046322, blue: 0.3150256872, alpha: 1), font: .boldSystemFont(ofSize: 26), cornerRadius: 0, textAlignment: .left)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        title.textColor = .lightGray
-        title.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 22, weight: .bold))
         title.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(title)
