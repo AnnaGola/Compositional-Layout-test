@@ -70,6 +70,7 @@
 		AFFF21C328C52440006B6266 /* IT Factory Test */ = {
 			isa = PBXGroup;
 			children = (
+				AFFF21F228C5F103006B6266 /* View */,
 				AFFF21EC28C54536006B6266 /* Application */,
 				AFFF21ED28C54541006B6266 /* Controller */,
 				AFFF21EE28C5454F006B6266 /* Extensions */,
@@ -92,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				AFFF21C828C52440006B6266 /* ViewController.swift */,
-				AFFF21EF28C5455F006B6266 /* Cells */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -134,6 +134,14 @@
 				AFFF21D228C52444006B6266 /* Info.plist */,
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		AFFF21F228C5F103006B6266 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AFFF21EF28C5455F006B6266 /* Cells */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
