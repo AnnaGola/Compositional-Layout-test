@@ -1,6 +1,7 @@
 # IT-Factory-Test
 
-Использовала CollectionView с Compositional Layout
+Использовала CollectionView с Compositional Layout, архитектуру MVC
+
 
 Тестовое задание, содержание:
 
