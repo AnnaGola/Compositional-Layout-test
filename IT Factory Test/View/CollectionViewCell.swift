@@ -9,8 +9,6 @@ protocol SelfConfiguringCell {
 class CollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
     
     static let identifier = "CollectionViewCell"
-    
-    var sections = ViewController.sections
     private let title = UILabel(textColor: #colorLiteral(red: 0.205396682, green: 0.2254426181, blue: 0.3813610077, alpha: 1), font: .boldSystemFont(ofSize: 17), cornerRadius: 0, textAlignment: .center)
     private var image = UIImageView(contentMode: .scaleAspectFill, cornerRadius: 15)
     
@@ -46,6 +44,6 @@ class CollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
     
     func configure(with item: Item) {
         title.text = item.title
-        image.image = UIImage(named: item.image.the1X)
+        image.image = UIImage(named: item.image.the1X) // Non-existed assets
     }
 }

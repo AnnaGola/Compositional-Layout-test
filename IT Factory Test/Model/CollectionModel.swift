@@ -1,25 +1,21 @@
 
 import Foundation
 
-// MARK: - Section
+    // MARK: - Section
 struct Section: Codable, Hashable {
-    static func == (lhs: Section, rhs: Section) -> Bool {
-        return lhs.hashValue == rhs.hashValue
-    }
-    
     let id, header: String
     let itemsTotal, itemsToShow: Int
     let items: [Item]
 }
 
-// MARK: - Item
+    // MARK: - Item
 struct Item: Codable, Hashable {
     let id: String
     let image: Image
     let title: String
 }
 
-// MARK: - Image
+    // MARK: - Image
 struct Image: Codable, Hashable {
     let the1X, the2X, the3X: String
     let aspectRatio: Int?

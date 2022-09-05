@@ -17,7 +17,7 @@
 		AFFF21DB28C524A4006B6266 /* HeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFF21DA28C524A4006B6266 /* HeaderSection.swift */; };
 		AFFF21DD28C524B9006B6266 /* CollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFF21DC28C524B9006B6266 /* CollectionModel.swift */; };
 		AFFF21DF28C524C3006B6266 /* jsonviewer.json in Resources */ = {isa = PBXBuildFile; fileRef = AFFF21DE28C524C2006B6266 /* jsonviewer.json */; };
-		AFFF21E328C53046006B6266 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFF21E228C53046006B6266 /* Bundle-Decodable.swift */; };
+		AFFF21E328C53046006B6266 /* Bundle+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFF21E228C53046006B6266 /* Bundle+Decodable.swift */; };
 		AFFF21E728C5359E006B6266 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFF21E628C5359E006B6266 /* UIImageView+Extension.swift */; };
 		AFFF21E928C535A2006B6266 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFF21E828C535A2006B6266 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -35,7 +35,7 @@
 		AFFF21DA28C524A4006B6266 /* HeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSection.swift; sourceTree = "<group>"; };
 		AFFF21DC28C524B9006B6266 /* CollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionModel.swift; sourceTree = "<group>"; };
 		AFFF21DE28C524C2006B6266 /* jsonviewer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jsonviewer.json; sourceTree = "<group>"; };
-		AFFF21E228C53046006B6266 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		AFFF21E228C53046006B6266 /* Bundle+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Decodable.swift"; sourceTree = "<group>"; };
 		AFFF21E628C5359E006B6266 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		AFFF21E828C535A2006B6266 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,11 +70,11 @@
 		AFFF21C328C52440006B6266 /* IT Factory Test */ = {
 			isa = PBXGroup;
 			children = (
-				AFFF21F228C5F103006B6266 /* View */,
 				AFFF21EC28C54536006B6266 /* Application */,
+				AFFF21F028C54570006B6266 /* Model */,
+				AFFF21F228C5F103006B6266 /* View */,
 				AFFF21ED28C54541006B6266 /* Controller */,
 				AFFF21EE28C5454F006B6266 /* Extensions */,
-				AFFF21F028C54570006B6266 /* Model */,
 				AFFF21F128C545A4006B6266 /* Supporting files */,
 			);
 			path = "IT Factory Test";
@@ -102,18 +102,9 @@
 			children = (
 				AFFF21E628C5359E006B6266 /* UIImageView+Extension.swift */,
 				AFFF21E828C535A2006B6266 /* UILabel+Extension.swift */,
-				AFFF21E228C53046006B6266 /* Bundle-Decodable.swift */,
+				AFFF21E228C53046006B6266 /* Bundle+Decodable.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		AFFF21EF28C5455F006B6266 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				AFFF21D828C5248A006B6266 /* CollectionViewCell.swift */,
-				AFFF21DA28C524A4006B6266 /* HeaderSection.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		AFFF21F028C54570006B6266 /* Model */ = {
@@ -139,7 +130,8 @@
 		AFFF21F228C5F103006B6266 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AFFF21EF28C5455F006B6266 /* Cells */,
+				AFFF21D828C5248A006B6266 /* CollectionViewCell.swift */,
+				AFFF21DA28C524A4006B6266 /* HeaderSection.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -222,7 +214,7 @@
 				AFFF21C528C52440006B6266 /* AppDelegate.swift in Sources */,
 				AFFF21DD28C524B9006B6266 /* CollectionModel.swift in Sources */,
 				AFFF21D928C5248A006B6266 /* CollectionViewCell.swift in Sources */,
-				AFFF21E328C53046006B6266 /* Bundle-Decodable.swift in Sources */,
+				AFFF21E328C53046006B6266 /* Bundle+Decodable.swift in Sources */,
 				AFFF21C728C52440006B6266 /* SceneDelegate.swift in Sources */,
 				AFFF21E928C535A2006B6266 /* UILabel+Extension.swift in Sources */,
 			);

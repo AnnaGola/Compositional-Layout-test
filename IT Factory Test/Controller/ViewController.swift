@@ -3,11 +3,14 @@ import UIKit
 import Foundation
 
 class ViewController: UIViewController {
-    static var sections = Bundle.main.decode([Section].self, from: "jsonviewer.json")
+    
+    var sections = Bundle.main.decode([Section].self, from: "jsonviewer.json")
+    
+    //MARK: - Properties
     var collectionView: UICollectionView!
-    var collectionViewCell = CollectionViewCell()
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>?
     
+    //MARK: - ViewControllers Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
@@ -17,8 +20,7 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = true
     }
- 
-
+   
     fileprivate func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -32,22 +34,12 @@ class ViewController: UIViewController {
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
     }
     
-    func configure<Cell: SelfConfiguringCell>(_ cellType: Cell.Type, with item: Item, for indexPath: IndexPath) -> Cell {
+    fileprivate func configure<Cell: SelfConfiguringCell>(_ cellType: Cell.Type, with item: Item, for indexPath: IndexPath) -> Cell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath) as? Cell else { fatalError() }
         
         cell.configure(with: item)
         return cell
-    }
-}
-
-    // MARK: - Alert
-extension ViewController {
-    func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
     }
 }
     
@@ -57,7 +49,7 @@ extension ViewController {
     func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) { collectionView, indexPath, item in
             
-            switch ViewController.sections[indexPath.section].id {
+            switch self.sections[indexPath.section].id {
             default:
                return self.configure(CollectionViewCell.self, with: item, for: indexPath)
             }
@@ -79,19 +71,18 @@ extension ViewController {
     
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-        snapshot.appendSections(ViewController.sections)
+        snapshot.appendSections(sections)
         
-        for section in ViewController.sections {
+        for section in sections {
             snapshot.appendItems(section.items, toSection: section)
         }
-        
         dataSource?.apply(snapshot)
     }
     
-    // MARK: - Layout
+    // MARK: - Composition Layout
     func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) in
-            let section = ViewController.sections[sectionIndex]
+            let section = self.sections[sectionIndex]
             
             switch section.id {
             default:
@@ -147,6 +138,14 @@ extension ViewController {
         
         return sectionHeader
     }
+    
+    // MARK: - Custom Alert
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
     // MARK: - Extension Delegate
@@ -163,6 +162,12 @@ extension ViewController: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         cell.layer.borderColor = UIColor.clear.cgColor
         cell.layer.borderWidth = 3
-        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        if collectionView.indexPathsForSelectedItems!.count == 5 {
+            showAlert(title: "Full", message: "You have selected 6 items")
+        }
+        return true
     }
 }
