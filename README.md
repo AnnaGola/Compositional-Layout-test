@@ -1,4 +1,4 @@
-# IT-Factory-Test
+# IT Factory Test 
 
 Использовала CollectionView с Compositional Layout, архитектуру MVC
 
